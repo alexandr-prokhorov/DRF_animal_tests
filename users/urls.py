@@ -11,7 +11,7 @@ app_name = UsersConfig.name
 urlpatterns = [
     # user urlpatterns
     path('', UserListAPIView.as_view(), name='user_list'),
-    path('create', never_cache(UserCreateAPIView.as_view()), name='user_create'),
+    path('create/', never_cache(UserCreateAPIView.as_view()), name='user_create'),
     path('<int:pk>/', UserRetrieveAPIView.as_view(), name='user_detail'),
     path('<int:pk>/update/', never_cache(UserUpdateAPIView.as_view()), name='user_update'),
     path('<int:pk>/delete/', never_cache(UserDestroyAPIView.as_view()), name='user_delete'),
