@@ -7,5 +7,9 @@ class SectionPaginator(PageNumberPagination):
     max_page_size = 10
 
 
-class SectionContentPaginator(PageNumberPagination):
+class SectionContentPaginator(SectionPaginator):
     page_size = 10
+
+
+class QuestionPaginator(SectionPaginator):
+    page_size = 5
