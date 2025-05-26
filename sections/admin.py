@@ -13,6 +13,7 @@ class ContentAdmin(admin.ModelAdmin):
     list_filter = ('section',)
     ordering = ('id', 'section')
 
+@admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ('id', 'question_section', 'question', 'description','answer')
     list_filter = ('question_section',)

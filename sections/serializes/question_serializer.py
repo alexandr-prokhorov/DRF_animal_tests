@@ -12,7 +12,7 @@ class QuestionSectionSerializer(ModelSerializer):
         fields = ('id', 'question_section')
 
 
-class QuestionSerializer(QuestionSectionSerializer):
+class QuestionSerializer(ModelSerializer):
     question_section = SlugRelatedField(slug_field='title', queryset=Section.objects.all())
 
     class Meta:
