@@ -1,13 +1,12 @@
-mssql-django
 Django
 python-dotenv
 djangorestframework
 pillow
 django-filter
+psycopg2-binary
 djangorestframework-simplejwt
 requests
 django-cors-headers
 drf-yasg
 redis
 coverage
-flake8
