@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 NULLABLE = {'blank': True, 'null': True}
 
+
 class UserRoles(models.TextChoices):
     MEMBER = 'member', _('member')
     MODERATOR = 'moderator', _('moderator')
@@ -11,7 +12,7 @@ class UserRoles(models.TextChoices):
 
 class User(AbstractUser):
     username = None
-    email = models.EmailField( unique=True, verbose_name=_('email address'))
+    email = models.EmailField(unique=True, verbose_name=_('email address'))
     role = models.CharField(max_length=9, choices=UserRoles.choices, default=UserRoles.MEMBER)
     first_name = models.CharField(max_length=50, verbose_name=_('first name'), **NULLABLE)
     last_name = models.CharField(max_length=50, verbose_name=_('last name'), **NULLABLE)

@@ -4,6 +4,7 @@ from rest_framework import status
 from sections.models import Section, Content, Question
 from sections.tests.utils import get_member_user
 
+
 class ContentTestCase(APITestCase):
 
     def setUp(self):
@@ -38,7 +39,6 @@ class ContentTestCase(APITestCase):
         print(response.json())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json()['question'], "Test Question")
-
 
         response = self.client.post(f'/questions/{self.test_question.id - 1}/', {"user_answer": "Test Answer"})
         self.assertEqual(response.status_code, status.HTTP_200_OK)

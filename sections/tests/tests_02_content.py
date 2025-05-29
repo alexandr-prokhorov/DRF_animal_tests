@@ -4,6 +4,7 @@ from rest_framework import status
 from sections.models import Section, Content
 from sections.tests.utils import get_admin_user, get_member_user
 
+
 class ContentTestCase(APITestCase):
 
     def setUp(self):

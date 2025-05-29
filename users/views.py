@@ -1,7 +1,6 @@
-from rest_framework import viewsets
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 from users.models import User
 from users.serializers.user_serializers import UserSerializer, UserCreateSerializer, UserUpdateSerializer, \

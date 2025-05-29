@@ -10,9 +10,9 @@ class SectionSerializer(ModelSerializer):
         model = Section
         fields = '__all__'
 
+
 class SectionListSerializer(ModelSerializer):
     section_content_title = SerializerMethodField()
-
 
     def get_section_content_title(self, section):
         return ContentSectionSerializer(Content.objects.filter(section=section), many=True).data
