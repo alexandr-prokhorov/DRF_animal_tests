@@ -13,9 +13,8 @@ class UserRoles(models.TextChoices):
     - MODERATOR: модератор
     """
 
-
-MEMBER = 'member', _('member')
-MODERATOR = 'moderator', _('moderator')
+    MEMBER = 'member', _('member')
+    MODERATOR = 'moderator', _('moderator')
 
 
 class User(AbstractUser):
