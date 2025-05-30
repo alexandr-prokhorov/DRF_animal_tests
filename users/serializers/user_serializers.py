@@ -6,12 +6,24 @@ from users.validators import PasswordValidator
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для представления информации о пользователе.
+    Используется для преобразования данных модели User в JSON-формат.
+    Включает поля: id, email, last_name, first_name, phone и is_active.
+    """
+
     class Meta:
         model = User
         fields = ['id', 'email', 'last_name', 'first_name', 'phone', 'is_active']
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для создания нового пользователя.
+    Включает обязательное поле password с ограничениями по длине.
+    Использует PasswordValidator для валидации пароля.
+    Метод create создает нового пользователя и устанавливает его пароль.
+    """
     password = serializers.CharField(write_only=True, required=True, min_length=8, max_length=16)
 
     class Meta:
@@ -29,6 +41,13 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для обновления информации о пользователе.
+    Позволяет обновлять поля: email, last_name, first_name, password, phone и is_active.
+    Закомментированные части кода могут быть использованы для валидации пароля
+    и его обновления при необходимости.
+    """
+
     class Meta:
         model = User
         fields = ['email', 'last_name', 'first_name', 'password', 'phone', 'is_active']
@@ -44,6 +63,12 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
 
 class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
+    """
+    Сериализатор для получения токена аутентификации пользователя.
+    Расширяет стандартный TokenObtainPairSerializer, добавляя поле email
+    в возвращаемый токен.
+    """
+
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)

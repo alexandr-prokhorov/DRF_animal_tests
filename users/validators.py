@@ -3,6 +3,13 @@ from django.core.exceptions import ValidationError
 
 
 class PasswordValidator:
+    """
+    Валидатор для проверки пароля.
+    Проверяет, соответствует ли пароль заданному регулярному выражению.
+    Пароль должен содержать только латинские буквы и цифры.
+    Атрибуты:
+    - field: имя поля, для которого выполняется валидация пароля.
+    """
 
     def __init__(self, field):
         self.field = field

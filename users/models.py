@@ -1,16 +1,33 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 NULLABLE = {'blank': True, 'null': True}
 
 
 class UserRoles(models.TextChoices):
-    MEMBER = 'member', _('member')
-    MODERATOR = 'moderator', _('moderator')
+    """
+    Класс для определения ролей пользователей.
+    Использует TextChoices для создания перечисления ролей:
+    - MEMBER: обычный пользователь
+    - MODERATOR: модератор
+    """
+MEMBER = 'member', _('member')
+MODERATOR = 'moderator', _('moderator')
 
 
 class User(AbstractUser):
+    """
+    Модель пользователя, расширяющая стандартную модель AbstractUser .
+    Поля:
+    - email: уникальный адрес электронной почты пользователя.
+    - role: роль пользователя (MEMBER или MODERATOR).
+    - first_name: имя пользователя.
+    - last_name: фамилия пользователя.
+    - phone: номер телефона пользователя.
+    - is_active: статус активности пользователя.
+    Использует email в качестве поля для аутентификации (USERNAME_FIELD).
+    """
     username = None
     email = models.EmailField(unique=True, verbose_name=_('email address'))
     role = models.CharField(max_length=9, choices=UserRoles.choices, default=UserRoles.MEMBER)

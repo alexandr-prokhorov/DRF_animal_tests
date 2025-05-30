@@ -6,12 +6,25 @@ from sections.serializes.content_serializers import ContentSectionSerializer
 
 
 class SectionSerializer(ModelSerializer):
+    """
+    Сериализатор для модели Section.
+    Этот сериализатор используется для преобразования экземпляров модели Section
+    в JSON-формат и обратно. Он включает все поля модели.
+    """
+
     class Meta:
         model = Section
         fields = '__all__'
 
 
 class SectionListSerializer(ModelSerializer):
+    """
+    Сериализатор для списка секций с содержимым.
+    Включает идентификатор, заголовок секции и список заголовков контента,
+    связанных с данной секцией. Поле section_content_title заполняется
+    с помощью метода get_section_content_title, который возвращает
+    сериализованные данные контента, относящегося к секции.
+    """
     section_content_title = SerializerMethodField()
 
     def get_section_content_title(self, section):

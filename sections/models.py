@@ -4,6 +4,11 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Section(models.Model):
+    """
+    Модель для представления секции.
+    Секция содержит заголовок и описание. Заголовок является обязательным полем,
+    а описание может быть пустым. Секции сортируются по идентификатору.
+    """
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     description = models.TextField(verbose_name=_("Description"), **NULLABLE)
 
@@ -17,6 +22,12 @@ class Section(models.Model):
 
 
 class Content(models.Model):
+    """
+    Модель для представления контента, связанного с секцией.
+    Контент содержит ссылку на секцию, заголовок и текст контента. Заголовок
+    является обязательным полем, а текст контента может быть пустым. Контент
+    сортируется по идентификатору.
+    """
     section = models.ForeignKey(Section, on_delete=models.CASCADE, verbose_name=_("Section"))
     title = models.CharField(max_length=150, verbose_name=_("Title"))
     content = models.TextField(verbose_name=_("Content"))
@@ -31,6 +42,11 @@ class Content(models.Model):
 
 
 class Question(models.Model):
+    """
+    Модель для представления вопроса, связанного с секцией.
+    Вопрос содержит ссылку на секцию, описание, текст вопроса и ответ. Описание,
+    текст вопроса и ответ могут быть пустыми. Вопросы сортируются по секции.
+    """
     question_section = models.ForeignKey(Section, on_delete=models.CASCADE, verbose_name=_("Section"))
     description = models.TextField(verbose_name=_("Description"), **NULLABLE)
     question = models.TextField(verbose_name=_("Question"), **NULLABLE)
