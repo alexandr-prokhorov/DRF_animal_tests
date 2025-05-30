@@ -12,6 +12,8 @@ class UserRoles(models.TextChoices):
     - MEMBER: обычный пользователь
     - MODERATOR: модератор
     """
+
+
 MEMBER = 'member', _('member')
 MODERATOR = 'moderator', _('moderator')
 
